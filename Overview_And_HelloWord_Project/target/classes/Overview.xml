@@ -1,0 +1,36 @@
+<!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+I. Author and Createion
+- Srping framework is open source Java Platform that provide comprehensive infrastructure support for developing robust Java application
+Eseasyly and Radpily.
+- Author: Rod Johnson 
+- Realease: was the first released under the apache 2.0 lisence - june 2003
+II. Overview
+1. Feature
+- Milion people in the world use Spring to create : Performing, Easely Testable, ReuseAble Code.
+- Spring is lightweight when it come to size and tranparency. Basic version is around 2MB.
+- Core feature of Spring can be used to develope any java application.
+- Spring target to J2EE development easier And Promote good programing by enabling POJO.
+2. Benefit
+	1. Enabling POJO => dont' need EJB container such chas Application SerVer,developer have option only Robust Container: tomcat...
+	2. Organized in modular fashion. => the classed and packages are substantial,you only have to worry about the one you need and
+	   ignore the rest.
+	3. Not Reivent the Wheel, instead of that, it make use of some existing technologies: serveral ORM Framework,Loging framework,
+	   JEE,Quataz and JDK Timer, and other view technologies.
+	4. Environment dependent code + Pojo => easy to test
+	5. Well-designed web MVC Framework
+	6. Convenient API to translate technologies-specific exception(thrown by JDBC,Hibernate,JDO...) into consistent and Unchecked Exception
+	7. Lightweight IOC container tend to lightweight => benificial for deploying application when computer Limit memory or CPU.
+	8. Providing consistent transaction to Scale down to local transaction(single database,...) or Scale up to global database(JTA)
+3.DI (Dependency Injection)
+- DI is the one concrete example of  Inversion of Controll.
+- Perpose: in Complex java application, classes should be design as dependent as posible FOR: Reusing code and Testing => DI will help glue these
+class together.
+- DI happend when passing param in the way Constructor or Setter method.
+- DI is the Heart of Spring Framework.
+4.AOP (Aspect Oriented Programing)
+- functions that span multiple point(method...) is called Crosscuting-Concerns 
+- AOP happend in some case: Logging,Declarity Transaction,Security,Caching...
+* The key unit of modularity of OOP is class <=> The Key unit of modularity in AOP is aspect
+=> class ~ aspect = (a class in AOP is called Aspect) 
+- Spring AOP module Provide  an aspect-oriented programing inplementation for define method-interceptor,pointcut...	
+	
