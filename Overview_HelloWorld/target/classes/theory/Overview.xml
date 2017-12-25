@@ -23,7 +23,7 @@ II. Overview
 	8. Providing consistent transaction to Scale down to local transaction(single database,...) or Scale up to global database(JTA)
 3.DI (Dependency Injection)
 - DI is the one concrete example of  Inversion of Controll.
-- Perpose: in Complex java application, classes should be design as dependent as posible FOR: Reusing code and Testing => DI will help glue these
+- Purpose: in Complex java application, classes should be design as dependent as posible FOR: Reusing code and Testing => DI will help glue these
 class together.
 - DI happend when passing param in the way Constructor or Setter method.
 - DI is the Heart of Spring Framework.
@@ -33,4 +33,33 @@ class together.
 * The key unit of modularity of OOP is class <=> The Key unit of modularity in AOP is aspect
 => class ~ aspect = (a class in AOP is called Aspect) 
 - Spring AOP module Provide  an aspect-oriented programing inplementation for define method-interceptor,pointcut...	
+III. Architechture
+- Spring is modular
+- Spring provide about 20 module.
+1. Core container
+- Core: module provide fundamental parts of Spring, including DI and IoC.
+- Bean: provide bean factory 
+- Context: module build on the solid base provided by Core and Bean. => it is medium to access any object and configured.
++ Application Context interface is the focal point of Context module.
+- SpEL: provide powerful expression language for query and multipulate object graph at runtime.
+2. Data access/ Integration
+- JDBC: provide a JDBC-abstraction layer => remove the need tedious JDBC related Coding.
+- ORM: provides integration layer for popular object-relational mapping APIs: JPA,JDO,Hibernate,iBatis.
+- OXM: provides abtraction layer that support object/xml mapping implementation: JaxB,castor,XMLBeans,JiBX and XStream.
+- JMS: container feature for producing and consuming Message.
+- Transaction: support Programatic and Declaritive transaction management for special class implement inteface and for all your POJOS.
+3. Web
+- WEB: provide basic web-oriented integration features such as multipart file upload and initialization of of IoC container
+using servlet-listioner and web-oriented contextx.
+- Web M-V-C: implement MVC.
+- Web-Socket: provide web-socket based, two-way comunication between client and the server in the web application.
+- Web-Portlet: implementation MVC is used in portlet environment and morrors the functionality of Web-Servlet.
+4. Miscellaneous
+- AOP
+- Aspect : provide integration with AspectJ , powerfull module of AOP
+- Instrument: provide instrumentation support and class loader implementation to be used in certain application servers.
+- Support STOMP as Web-Socket sub-protocol
+- Test: support JUnit and TestNG.
+ 	
+
 	
