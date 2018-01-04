@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+I.Concept
+- when writing a complex java application, we need it as much independent as posible for reusing and testing.
+- DI (Dependency Injection) help Gluing and keep it independent at the same time.
+		eg:
+			Non-DI:
+					public class Student() {
+						private Pencil pecil;
+						
+						public Student() {
+							this.pencil  = new Pencil();
+						}
+					}
+					
+			DI:
+					public class Student() {
+						private Pencil pencil;
+						
+						public Student(Pencil pencil) {
+							this.pencil = pencil;
+						}
+					}
+- There are 2 method of Inject denpendency:
++ constructor
++ setter method
+1. Constructor DI
+- There are many way to inject to constructor:
++ Reference:
+				eg:
+					<bean name="bean1" class="com.Student">
+						<constructor-arg ref="pencileBean" />
+					</bean>
+					<bean name="pencileBean" class="com.Pencil"/>
++ Index:
+				eg:
+					<bean name="bean2" class="com.Student">
+						<constructor-arg index="0" ref="pencilBean2"/>
+						<constructor-arg index="1" ref="Ngô Văn Doanh"/>
+					</bean>					
+					
+					<bean name="pencilBean2" class="com.Pencil"></bean>
++ Type			eg:
+					<bean name="bean3" class="com.Student"> 
+						<constructor-arg type="int" value="20" />
+						<constructor-arg type="com.Pencil" ref="pencilBean3" />
+ 					</bean>		
+ 					<bea name="pencilBean3" class="com.Pencil"></bea>
+ 					
+2. Setter method
+- <property></property> tag
+				eg:
+					<bean name="..." class="...">
+						<property name="studentName" value="Ngô Văn Doanh"></property>
+					</bean> 		
+II.Inject Inner Bean								
