@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p = "http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+    <!-- CONSTRUCTOR ===================================================================================================-->
+   	<!-- Reference -->
+	<bean name="student1" class="demo.Student">
+		<!-- if no set index constructor must be having only a parameter -->
+		<constructor-arg ref="pencilBean1"></constructor-arg>
+	</bean>
+	<bean name="pencilBean1" class="demo.Pencil"></bean>
+	
+	<!-- Index -->
+	<bean name="student2" class="demo.Student">
+		<constructor-arg index="0" ref="pencilBean2"></constructor-arg>
+		<constructor-arg index="1" value="Ngô Văn Doanh"></constructor-arg>
+	</bean>
+	<bean name="pencilBean2" class="demo.Pencil"></bean>
+	
+	<!-- Type -->
+	<bean name="student3" class="demo.Student">
+		<constructor-arg type="int" value="20"/>
+		<constructor-arg type="demo.Pencil" ref="pencilBean3"/>
+	</bean>
+	<bean name="pencilBean3" class="demo.Pencil"></bean>
+	
+	
+	
+	<!-- PROPERTY ===================================================================================================-->
+	<!-- way 1 -->
+	<bean name="student4" class="demo.Student">
+		<property name="pencil" ref="pencilBean4"></property>
+	</bean>
+	<bean name="pencilBean4" class="demo.Pencil"></bean>
+	
+	<!-- way 2 -->
+	<!-- must have this line:  xmlns:p = "http://www.springframework.org/schema/p" -->
+	<bean name="student5" class="demo.Student"
+		p:pencil-ref = "pencilBean5"
+		p:studentName = "Ngô Văn Doanh">
+	</bean>
+	<bean name="pencilBean5" class="demo.Pencil"></bean>
+	
+	
+	<!-- Inject Inner Bean===========================================================================================-->
+	<bean name="student6" class="demo.Student">
+		<constructor-arg name="pencil">
+			<bean class="demo.Pencil"></bean>
+		</constructor-arg>
+		<property name="studentName" value="Ngô Văn Doanh"></property>
+	</bean>
+	
+	<!-- Inject Collection  ==========================================================================================-->
+	<bean name="student7" class="demo.injectcollection.Student">
+		<property name="marks">
+			<list>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</list>
+		</property>
+		
+		<property name="cars">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</set>
+		</property>
+		
+		<property name="companies">
+			<map>
+				<entry key="a" value="doanhA"></entry>
+				<entry key="a" value="doanhD"></entry>
+				<entry key="b" value="doanhB"></entry>
+				<entry key="c" value="doanhC"></entry>
+			</map>
+		</property>
+		<property name="address">
+			<props>
+				<prop key="a">DoanhA</prop>
+				<prop key="a">DoanhD</prop>
+				<prop key="b">DoanhB</prop>
+				<prop key="c">DoanhC</prop>
+			</props>
+		</property>
+		
+	</bean>
+		
+</beans>
