@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+I.Bean difinition
+1.Definition
+- Beans are the object that form the backbone of the spring application.
+- Beans is instantiated,assembly, and are managed Spring IoC Container.
+- Beans ared created with the Configuration Metadata that supply to container.
+* Configuration metadata that supply to container:
++ How to create bean
++ Bean's life cycle detail
++ Bean's dependencies
+
+2.Configuration Metadata:
+- elements:
++ class  eg: com.Student
++ name (or id in xml): identifier
++ scope: scope of the object
++ constructor-arg, properties and autowired  are to inject the depedencies
++ lazy instante : create object when the first request is created
++ initialization: a callback method only is called after all neccessary properties ared set by container.
++ destruction : a callback method is used when a bean is destroy.
+xml: (lazy-init,init-method,destroy-method)
+
+- Three configuration way:
++ xml
++ annotation-based configuration
++ java-based configuration
+
+II. Bean Scopes
+- Spring support 5 scopes:
++ Singleton: only one object of this class is create
++ Prototype: create each object per time 
++ Request
++ Session
++ Global-Session
+
+- The default scope of bean is singleton
+
+III. Bean life cycle
+- when a bean is init, it need to init to usable state, and when it is no longer required, it will be
+remove from container.
+- There are list of the activitives between the time of init and destroy: init method,destroy method...
+1. Init callback
+- java config: implement InitizlizingBean interface and implement afterPropertiesSet() method
+		eg:
+			public class Student implements InitializingBean {
+				public void afterPropertiesSet(){
+					System.out.println("connect db");
+				}
+			}
+- xml: write init-method="method_name"
+		eg:
+			public class Student {
+				public void init(){
+					System.out.println("Connect DB");
+				}
+			} 
+			
+			xml: <bean id="..." class="..." init-method="init"></bean>
+2. Destroy  callback
+- java config: imlements DisposableBean and implements destroy() method
+- xml: destroy-method="method_name"
+3.Default init and destroy method
+- When you have many bean and can't set init and destroy for all,you only need set default init and destroy.
+- XML config: 
+			   <beans xmlns = "http://www.springframework.org/schema/beans"
+				   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+				   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+				   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+				   default-init-method = "init" 
+				   default-destroy-method = "destroy">	
+				   ...
+			   </beans>
+IV.Bean Post proccessor
+- Spring IoC Container instance a bean, BeanPostProccessor operate a bean.			      		
+- BeanPostProccessor provide callback method that you can implement to provide your own instantiation logic, dependency-resolution logic,
+You can also custom logic after the Spring container finishes instantiating,configuring and initializing.
+- With multiple BeanPorccessor interface and Want to controll order of them, let implements Ordered interface and set order property
+provide by BeanPostProccessor.
+
+
+V.Bean Definition Inheritance
+- A bean definition contains a lot of:
++ Configuration information: constructor arguments,property values,...
++ Container-specific information: initialization method,static factory method,... 
+- Spring Bean definition  inheritance  has nothing to do like inheritance of java class, But the inheritance concept is same
+- When use XML configuration: using "parent" attritube
+
+* Bean Definition template:
++ when you use bean template , you only need to specific abstract="true" - you dont' need specific class=""
+
+
+
+
