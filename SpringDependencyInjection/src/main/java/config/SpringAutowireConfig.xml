@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p = "http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+    <!-- Property Auto-Wire ======================================================================================-->
+    <!-- Auto-Wire by name  -->
+	<bean name="student" class="demo.Student" autowire="byName">
+	</bean>
+	<!-- this bean will be injected -->
+	<bean name="pencil" class="demo.Pencil"></bean>
+	
+	<!-- Auto-Wire by name -->
+	<bean name="student2" class="demo.Student" autowire="byType"></bean>
+	
+	
+	<!-- Constructor Auto-Wire ==================================================================================-->
+	<bean name="student3" class="demo.Student" autowire="constructor"></bean>
+</beans>

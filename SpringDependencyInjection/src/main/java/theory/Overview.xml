@@ -52,4 +52,22 @@ I.Concept
 					<bean name="..." class="...">
 						<property name="studentName" value="Ngô Văn Doanh"></property>
 					</bean> 		
-II.Inject Inner Bean								
+II.Inject Inner Bean	(view demo)
+III.Inject collection (view demo)
+IV.Auto-Wiring
+- Spring container can "autowire" relationships beetwen collabarating beans without using <constructor-arg>
+or <property> element.
+- There are many autowire modes:
++ No : default
++ By name: Property Name: inject to setter method has same name
++ By Type: Property Data Type : inject to setter method has same type  
++ By constructor: inject to constructor
++ Auto detect: constructor ->(if fail) byType
+
+* Limitation:
++ Can't auto wire primitive data type
++ Overriding possibility: <construrctor-arg/> and <property> alway override autowire
++ Confuse nature: not exact than explicit. 
+
+		
+							

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+I. Concept
+- From spring 2.5 , it enable for configuration dependency injection using annotations.
+- Annotation injection override the former for property wired through both approaches.
+- Annotation wiring is not turned on in spring container by default => need to enable annotation based wiring
+	eg:
+		<context:annotation-config/>
+- There are some important annotation: 
++ @Required
++ @Autowired
++ @Qualifier
++ JSR 250 annotation: @PostConstruct,@PreDestroy and @Resource
+1. @Required
+- Being apply to property setter method.
+2. @Autowired
+- @Autowired can be use on constructor , setter method, property or methods.
+		eg:
+			
+		+	@Autowired
+			private UserDAO userDAO;
+		
+		+	@Autowired
+			public void setUserDAO(UserDAO userDAO) {
+				this.userDAO = userDAO;
+			}	
+		
+		+	@Autowired
+			public UserService (UserDAO userDAO) {
+				this.userDAO = userDAO;
+			}		
+3. @Qualifier
+- @Qualifier annotation along with @Autwired to specific exactly Bean that want to wire.
+		eg:
+		+	XML: 
+			<Bean name="userDAO1" class="demo.UserDAO"/>
+			<Bean name="userDAO2" class="demo.UserDAO"/>
+		
+		+	Java:
+			@Autowired
+			@Qualifier("userDAO1")
+			public UserService (UserDAO userDAO) {
+				this.userDAO = userDAO;
+			}	
+4. @PostConstruct,@PreDestroy and @Resource
+-  @PostConstruct and @PreDestroy are used to marked the method will be set to init-method and destroy-method.
+		eg:
+		 +	Java:
+		 	@PostConstruct
+		 	public void init() {
+		 		System.out.println("init method");
+		 	}					 			
+		 	
+		 	@PreDestroy
+		 	public void destroy() {
+		 		System.out.println("destroy method");
+		 	}
+- @Resource == @Autowired by name
+		eg:
+			@Resource("userDAO1")
+			private void setUserDAO(UserDAO userDAO) {
+				this.userDAO = userDAO;
+			}		 		
+
+  
