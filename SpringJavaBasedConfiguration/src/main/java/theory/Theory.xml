@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+I.Concept
+- Java-based Configuration enable to write most of your Spring configuration with
+the help of Annotation-based configuration.
+II. Annotation
+1. @Configuration and @Bean
+- @Configuration indicate that present java class can be used by Spring IoC Container as a source of bean definition.
+- @Bean indicate the the method annotataed with @Bean will return a object that will be registed by Spring Application Context.
+2. Inject Bean dependency
+	eg: 
+		@Bean
+		public Student createStudent() {
+			return new Student(createPencil());
+		}
+		
+		@Bean
+		public Pencil createPencil() {
+			return new Pencil();
+		}
+3. @Import
+- allow to loading Bean definition from an other class.
+	 eg:
+	 	@Configuration
+	 	@Import(ConfigB.class) 
+	 	public class SpringConfig {
+	 	
+	 	}
+4. Life cycle
+- eg: 
+		initMethod = "init", destroyMethod = "destroy"
+5. Spring Bean Scope
+- eg: 
+		@Scope("prototype")
+
