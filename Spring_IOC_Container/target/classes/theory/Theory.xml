@@ -1,0 +1,25 @@
+<!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+I.Definition
+- Spring container is the core of spring.
+- Container will create Object, config them, wire them and manage their life cycle from creation to  destruction.
+- Spring container use DI to manage component(Bean).
+- Configuration: can be represented by XML, Java annotation or Java code.
+II, Container Type(2)
+- Spring has 2 distinct type of container:
+1.Spring BeanFactory Container
+- interface : org.springframework.beans.factory.BeanFactory
+- this interface and some related (BeanFactoryAware,InitializingBean,DisposableBean) are still represent for backward
+compability and has many third-party methods.
+- Implementation: XmlBeanFactory,...
+* Benifits:
+- BeanFactory is preferd where resource is limited like mobile or applet-based application.
+
+2.ApplicationContext interface	
+- it is spring advanced container.
+- interface: org.springframework.context.ApplicationContext
+- similiar to  BeanFactory,it can load bean,wire them, config,manage their cycle and dispense bean upon request
+- This interface is include all functions and it is recommened over BeanFactory.
+- implementation: FileSystemXMLApplicationContext,ClassPathXMLApplicationContext,WebXMLApplicationContext...
+
+
+
