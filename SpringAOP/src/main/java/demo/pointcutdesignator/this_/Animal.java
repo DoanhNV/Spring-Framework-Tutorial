@@ -1,6 +1,6 @@
 package demo.pointcutdesignator.this_;
 
-public class Animal {
+public interface Animal {
 	
-	public void display() {}
+	public void display();
 }

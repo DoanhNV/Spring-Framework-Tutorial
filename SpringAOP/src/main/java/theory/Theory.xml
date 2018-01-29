@@ -42,3 +42,8 @@ alway represent for a execution of method.
  4. after-throwing
  5. around
  
+ IV. Combining pointcut expressions
+ - you can you && ,!!,!
+ 		eg:
+ 		+ execution(* *(..) && args(Long))
+ 		+ ("pointcut1() && pointcut2()")

@@ -11,7 +11,7 @@ public class AnimalAspect {
 	// within(demo.pointcutdesignator..*)
 	
 	// => within not apply for class that extend parent
-	
+	// @Pointcut("!within(demo.pointcutdesignator.within.Person)")
 	@Pointcut("within(demo.pointcutdesignator.within.Person)")
 	public void createPointCut () {}
 	
