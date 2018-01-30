@@ -1,4 +1,4 @@
-package demo.pointcutdesignator.annotation.args;
+package demo.pointcutdesignator.annotation.target;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class PersonAspect {
 	
-	@Pointcut("@args(demo.pointcutdesignator.annotation.args.PersonValidator)")
+	@Pointcut("@args(demo.pointcutdesignator.annotation.target.PersonValidator)")
 	public void createPointCut () {}
 	
 	@Before("createPointCut()")

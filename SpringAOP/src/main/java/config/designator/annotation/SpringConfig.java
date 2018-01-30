@@ -8,16 +8,39 @@ import demo.pointcutdesignator.annotation.args.Person;
 import demo.pointcutdesignator.annotation.args.PersonAspect;
 
 @Configuration
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class SpringConfig {
-	
+
+	// @args
 	@Bean("person1")
 	public Person createPerson1() {
 		return new Person();
 	}
-	
+
 	@Bean("aspect1")
 	public PersonAspect createPersonAspect1() {
 		return new PersonAspect();
-	} 
+	}
+
+	// @target
+	@Bean("person2")
+	public demo.pointcutdesignator.annotation.target.Person createPerson2() {
+		return new demo.pointcutdesignator.annotation.target.Person();
+	}
+
+	@Bean("aspect2")
+	public demo.pointcutdesignator.annotation.target.PersonAspect createPersonAspect2() {
+		return new demo.pointcutdesignator.annotation.target.PersonAspect();
+	}
+
+	// @annotation
+	@Bean("person3")
+	public demo.pointcutdesignator.annotation.annotation.Person createPerson3() {
+		return new demo.pointcutdesignator.annotation.annotation.Person();
+	}
+
+	@Bean("aspect3")
+	public demo.pointcutdesignator.annotation.annotation.PersonAspect createPersonAspect3() {
+		return new demo.pointcutdesignator.annotation.annotation.PersonAspect();
+	}
 }
