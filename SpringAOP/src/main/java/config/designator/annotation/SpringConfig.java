@@ -35,12 +35,12 @@ public class SpringConfig {
 
 	// @annotation
 	@Bean("person3")
-	public demo.pointcutdesignator.annotation.annotation.Person createPerson3() {
-		return new demo.pointcutdesignator.annotation.annotation.Person();
+	public demo.pointcutdesignator.annotation.execution.Person createPerson3() {
+		return new demo.pointcutdesignator.annotation.execution.Person();
 	}
 
 	@Bean("aspect3")
-	public demo.pointcutdesignator.annotation.annotation.PersonAspect createPersonAspect3() {
-		return new demo.pointcutdesignator.annotation.annotation.PersonAspect();
+	public demo.pointcutdesignator.annotation.execution.PersonAspect createPersonAspect3() {
+		return new demo.pointcutdesignator.annotation.execution.PersonAspect();
 	}
 }

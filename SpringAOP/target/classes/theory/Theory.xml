@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+I.Concept
+- One of the key component of Spring is Aspect Oriented Programing (AOP).
+- AOP can break down program login into many part called concern.
+- The function that span mutiple point of application is called cross-cutin concerns <=> this cross-cutting concern
+are conceptually separate the business logic of application.
+- There are many common part of logic: Logging, auditing, declareity transaction, secyrity, caching...
+
+- The key unit of OOP is class <=> The key unit of modularity of AOP is aspect.
+- DI help decouple object <=> AOP help decouple cross-cutting concern from the object that affect.
+
+- AOP provide Interceptor to intercep application.
+II. Terminologies
+ 1. Aspect ~ class
+ - a Module has a set of APIs providing cross-cutting concern.
+ 2. Join point
+ - A point during the execution of program, such as the execution of method or exception handling. In Spring AOP, a join point
+alway represent for a execution of method.
+ 			 eg:
+			 expression =>				"execution(* com.tutorialspoint.Student.getName(..))"
+-  @Pointcut("execution(* * getName()")
+=> JoinPoint list All getName() method at any class,any package 
+ 3. Advice
+ - This is actual action to be taken  around the methhod execution; actual peice of code will be execute on the
+ application.
+ 			eg:
+ 					@Befor(),@After(),@Around()...
+ 4. Pointcut
+ - This is set of one or more join points.
+
+ 5. Introduction 
+ - Allowing you to add new methods or atributes to the existing class.
+ 6. Target Object
+ - Object being adviced by one or more apsect.
+ 7. Weaving
+ - This is the process of linking Aspects with another Application types or Objects to create an advised object.
+ III. Advice
+ - Advice is an action taken by aspect at a particular joinpoint.
+ 1. before
+ 2. after
+ 3. after-returning
+ 4. after-throwing
+ 5. around
+ 
+ IV. Combining pointcut expressions
+ - you can you && ,!!,!
+ 		eg:
+ 		+ execution(* *(..) && args(Long))
+ 		+ ("pointcut1() && pointcut2()")
