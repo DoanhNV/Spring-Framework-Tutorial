@@ -10,4 +10,7 @@ import java.lang.annotation.Target;
 public @interface PersonValidator {
 	
 	public boolean isRun() default true;
+	
+	public static final String ANNOTATION_TYPE = Integer.class.toString();
+	public static final String ANNOTATION_PRIMITIVE_TYPE = "int";
 }

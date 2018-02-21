@@ -10,7 +10,7 @@ public class Application {
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 		Person person = (Person) context.getBean("person3");
-		person.say(new Pencil(),"Ngo Van Doanh");
+		person.say(null,"Ngo Van Doanh",22,"HaNoi");
 	}
 }
 
