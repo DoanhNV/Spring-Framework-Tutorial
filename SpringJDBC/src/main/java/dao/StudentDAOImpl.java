@@ -4,14 +4,15 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import entity.Student;
 import entity.mapper.StudentMapper;
 
-public class StudentDAOImpl implements StudentDAO {
-	private DataSource dataSource;
+public class StudentDAOImpl extends AbstractDAO implements StudentDAO {
 	private JdbcTemplate jdbcTemplate;
+	private DataSource dataSource;
 	
 	public StudentDAOImpl() {
 
@@ -23,14 +24,20 @@ public class StudentDAOImpl implements StudentDAO {
 	}
 	
 	public Student getOne(int id) {
-		String sqlString = "select * from student where id = ?";
-		Student student = jdbcTemplate.queryForObject(sqlString,Student.class,id);
+		Student student = null;
+		try {
+			String sqlString = "select * from student where id=?";
+			student = jdbcTemplate.queryForObject(sqlString,new Object[]{id},new BeanPropertyRowMapper<Student>(Student.class));
+		} catch (Exception e) {
+			System.out.println("this user not exist!");
+		}
 		return student;
 	}
 
 	public List<Student> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sqlString = "SELECT * FROM student";
+		List<Student> students = jdbcTemplate.query(sqlString, new StudentMapper()); // BeanPropertyRowMapper<Student>(Student.class)
+		return students;
 	}
 
 	public boolean insert(Student student) {
@@ -40,12 +47,14 @@ public class StudentDAOImpl implements StudentDAO {
 	}
 
 	public boolean update(Student student) {
-		// TODO Auto-generated method stub
-		return false;
+		String sqlString = "update student set user_name = ? ,age = ? where id = ?";
+		int row = jdbcTemplate.update(sqlString,student.getUserName(),student.getAge(),student.getId());
+		return true;
 	}
 
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
+		String sqlString = "delete from student where id = ?";
+		jdbcTemplate.update(sqlString, id);
 		return false;
 	}
 
@@ -55,14 +64,6 @@ public class StudentDAOImpl implements StudentDAO {
 
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
-	}
-
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
 	}
 	
 }

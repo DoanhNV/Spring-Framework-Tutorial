@@ -14,4 +14,5 @@ public interface StudentDAO {
 	public boolean update(Student student);
 	
 	public boolean delete(int id);
+	
 }

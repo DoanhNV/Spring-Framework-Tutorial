@@ -1,30 +1,30 @@
 package entity;
 
 public class Student {
-	private int id;
+	private Integer id;
 	private String userName;
-	private int age;
+	private Integer age;
 
 	public Student() {
 
 	}
 	
-	public Student(String userName, int age) {
+	public Student(String userName, Integer age) {
 		this.userName = userName;
 		this.age = age;
 	}
 
-	public Student(int id, String userName, int age) {
+	public Student(Integer id, String userName, Integer age) {
 		this.id = id;
 		this.userName = userName;
 		this.age = age;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -36,11 +36,11 @@ public class Student {
 		this.userName = userName;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
