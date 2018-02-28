@@ -4,30 +4,27 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import entity.Student;
 import entity.mapper.StudentMapper;
 
 public class StudentDAOImpl extends AbstractDAO implements StudentDAO {
-	private JdbcTemplate jdbcTemplate;
-	private DataSource dataSource;
 	
 	public StudentDAOImpl() {
 
 	}
 	
 	public StudentDAOImpl(DataSource dataSource) {
-		this.dataSource = dataSource;
-		jdbcTemplate = new JdbcTemplate(dataSource);
+		this.datasource = dataSource;
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 	public Student getOne(int id) {
 		Student student = null;
 		try {
 			String sqlString = "select * from student where id=?";
-			student = jdbcTemplate.queryForObject(sqlString,new Object[]{id},new BeanPropertyRowMapper<Student>(Student.class));
+			student = jdbcTemplate.queryForObject( sqlString,new Object[]{id},new StudentMapper());
 		} catch (Exception e) {
 			System.out.println("this user not exist!");
 		}
@@ -58,12 +55,4 @@ public class StudentDAOImpl extends AbstractDAO implements StudentDAO {
 		return false;
 	}
 
-	public DataSource getDataSource() {
-		return dataSource;
-	}
-
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-	
 }
