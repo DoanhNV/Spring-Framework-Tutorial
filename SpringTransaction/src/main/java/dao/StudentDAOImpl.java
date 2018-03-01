@@ -2,7 +2,6 @@ package dao;
 
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -24,9 +23,9 @@ public class StudentDAOImpl extends AbstractDAO implements StudentDAO {
 		TransactionDefinition df = new DefaultTransactionDefinition();
 		TransactionStatus status = transactionManager.getTransaction(df);
 		try {
-			String querySQL = "select * from student where id=?";
-			Student queryStudent = jdbcTemplate.queryForObject(querySQL,new BeanPropertyRowMapper<Student>(Student.class), student.getId());
-			if (queryStudent != null) {
+			String updateSql1 = "update student set id = ?, user_name = ?, age = ?";
+			jdbcTemplate.update(updateSql1, student.getId(), student.getUserName(), student.getAge());
+			if (1 != 2) {
 				System.out.println("this student not exist!");
 				throw new Exception("this student not exist!");
 			}

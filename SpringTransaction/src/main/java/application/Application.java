@@ -12,7 +12,7 @@ public class Application {
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		StudentDAO studentDAO = context.getBean(StudentDAO.class);
-		Student student = new Student(2, "Hello Doanh", 22);
+		Student student = new Student(2, "Hello Doanh", 21);
 		studentDAO.updateIfExist(student);
 		((AbstractApplicationContext)context).close();
 	}
