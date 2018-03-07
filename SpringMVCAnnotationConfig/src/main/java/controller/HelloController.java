@@ -16,7 +16,7 @@ public class HelloController {
 	@RequestMapping("/")
 	public String redirecter(RedirectAttributesModelMap redirectAttributesModelMap) {
 		redirectAttributesModelMap.addAttribute("userName", "Never back down");
-		return "redirect:hello";
+		return "redirect:home";
 	}
 	
 	@RequestMapping("/hello")
@@ -29,5 +29,10 @@ public class HelloController {
 	public String createStudent(@ModelAttribute("user") User user) {
 		System.out.println(user);
 		return "helloword";
+	}
+	
+	@RequestMapping(value = "/home")
+	public String loadHome() {
+		return "home";
 	}
 }
