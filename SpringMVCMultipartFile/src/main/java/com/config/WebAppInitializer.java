@@ -10,7 +10,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class WebAppInitializer implements WebApplicationInitializer {
-	private static final String DES_SOURCE = "D:/app/";
+	private static final String TEMP_SOURCE = "D:/app/";
 	private static final int MAX_FILE_SIZE = 10485760;
 
 	public void onStartup(ServletContext servletContext) throws ServletException {
@@ -22,7 +22,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		dispatcher.addMapping("/");
 		
 		dispatcher.setLoadOnStartup(1);
-		MultipartConfigElement multipartConfigElement = new MultipartConfigElement(DES_SOURCE, MAX_FILE_SIZE, MAX_FILE_SIZE*2,
+		MultipartConfigElement multipartConfigElement = new MultipartConfigElement(TEMP_SOURCE, MAX_FILE_SIZE, MAX_FILE_SIZE*2,
 				0);
 		dispatcher.setMultipartConfig(multipartConfigElement);
 	}
