@@ -10,10 +10,11 @@ public class MainApp {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		CustomerDAO customerDAO = applicationContext.getBean(CustomerDAO.class);
-		for (int i = 0; i < 10; i++) {
-			Customer customer2 = new Customer("DoanhNV1", "Táo", 8000000);
+		/*for (int i = 0; i < 10; i++) {
+			Customer customer2 = new Customer("DoanhNV3", "Táo", 8000000);
 			Customer saveCustomer3 = customerDAO.save(customer2);
-		}
+		}*/
+		System.out.println(customerDAO.find(2));
 	
 	}
 }
