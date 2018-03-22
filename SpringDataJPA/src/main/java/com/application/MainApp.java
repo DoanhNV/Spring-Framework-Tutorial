@@ -13,16 +13,21 @@ public class MainApp {
 		AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		UserService userService = context.getBean(UserService.class);
 		
-		userService.testCreate2();
+		/*userService.testCreate2();
 		User user = userService.testFindLazy(1);
-		System.out.println(user.getCountry().getId());
+		System.out.println(user.getCountry().getId());*/
 		/*userService.testReadLimit();*/
+		/*userService.testReadElement();*/
+		/*userService.testReadForDTO();*/
+		userService.testExample();
 		
 		
 		// COUNTRY
 		CountryService countryService = context.getBean(CountryService.class);
 		/*countryService.testcreate();*/
 		/*countryService.testRead();*/
+		
+		
 		
 		context.close();
 	}

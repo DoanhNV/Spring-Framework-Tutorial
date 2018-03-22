@@ -11,7 +11,7 @@ import javax.persistence.NamedEntityGraph;
 
 @Entity
 @NamedEntityGraph(name =  "testGraph",attributeNodes = @NamedAttributeNode(value = "country"))
-public class User {
+public class User extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
